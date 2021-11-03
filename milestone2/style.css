@@ -1,0 +1,65 @@
+.bg-behind{
+    z-index: -1;
+    /* position: relative; */
+}
+.bg-top{
+    height: 20vh;
+    background-color: #0C9688;
+}
+.bg-down{
+    height: 80vh;
+}
+
+.general-chat-container{
+    height:80vh;
+    width: 800px;
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+}
+
+.subtitle{
+    font-size: 11px;
+    font-weight: bold;
+}
+.testo-semplice{
+    font-size: 10px;
+    color: gray;
+}
+
+/* Zona messaggi inviati e ricevuti */
+.sfondo-chat{
+    background-image: url(img/mine.jpg);
+    height: 100%;
+    overflow: auto;
+}
+.bubble-sent{
+    max-width: 50%;
+    min-height: 30px;
+    background-color: #D5F9BE;
+    font-size: 14px;
+    align-self: flex-end;
+}
+.bubble-received{
+    max-width: 50%;
+    min-height: 30px;
+    background-color: #FFFFFE;
+    font-size: 14px;
+}
+.write-msj{
+    height: 60px;
+    background-color: #F3EEEA;
+    width: 100%;
+}
+
+/* Crea messaggio */
+.smile-container{
+    width: 40px;
+    text-align: center;
+}
+.micro-container{
+    width: 40px;
+    text-align: center;
+}

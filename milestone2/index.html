@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href=“https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css”>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="style.css">
+    <title>Boolzapp</title>
+</head>
+
+<body>
+    <main id="root">
+        <section class="bg-behind">
+            <div class="container-fluid bg-top"></div>
+            <div class="container-fluid bg-down" style="background-color: #DADBD6;"></div>
+        </section>
+        <section class="d-flex border rounded bg-light general-chat-container">
+
+            <div class=" col-4 d-flex flex-column" style="height: 100%;">
+                <!-- Sx first small container -->
+                <div class="container d-flex align-items-center py-2" style="background-color: white;">
+                    <img src="img/avatar_io.jpg" alt="avatar_1" style="height: 40px; border-radius: 50%;">
+                    <div class="flex-grow-1 px-2">Nome Utente</div>
+                    <div class="d-flex" style="color: #B1B1B1;">
+                        <i class="fas fa-spinner px-1"></i>
+                        <i class="fas fa-comment-alt px-1"></i>
+                        <i class="fas fa-ellipsis-v px-1"></i>
+                    </div>
+                </div>
+                <!-- Sx notifiche container -->
+                <div class="container d-flex align-items-center p-3" style="background-color: #8FDAFA;">
+                    <div class="bg-light d-flex align-items-center justify-content-center"
+                        style="height: 30px; width: 30px; border-radius: 50%;">
+                        <i class="fas fa-bell-slash" style="font-size: 15px;color: #8FDAFA;"></i>
+                    </div>
+                    <div class="d-flex flex-column" style="padding-left: 10px;">
+                        <span class="subtitle">Ricevi notifiche di nuovi messaggi</span>
+                        <span class="testo-semplice">Attiva notifiche desktop</span>
+                    </div>
+                </div>
+                <!-- Search container -->
+                <div class="d-flex container align-items-center py-2" style="background-color: #FAFAFA;">
+                    <div class="px-2" style="background-color: white;">
+                        <i class="fas fa-search" style="color: gray; font-size: 16px;"></i>
+                    </div>
+                    <input class="py-2" type="text" placeholder="Cerca o inizia una nuova chat"
+                        style="font-size: 14px; color: gray; flex-grow: 1; border: 0;">
+                </div>
+                <!-- Chat users -->
+                <div class=" container d-flex flex-column flex-grow-1 bg-light overflow-auto">
+                    <!-- user singolo -->
+                    <div class="container d-flex py-2" style="background-color: white;" v-for="key in allUsers">
+                        <img :src="key.avatar" alt="avatar_1" style="height: 40px; border-radius: 50%;">
+                        <div class="d-flex flex-column flex-grow-1 px-2">
+                            <span class="">{{key.nome}}</span>
+                            <span class="testo-semplice">{{key.messaggio}}</span>
+                        </div>
+                        <div>
+                            <span class="testo-semplice">10/01/2020 16:15:22</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Dx -->
+            <div class="col-8 d-flex flex-column">
+                <!-- dx dati usuario -->
+                <div class="container d-flex align-items-center py-2" style="background-color: white;">
+                    <img src="img/avatar_1.jpg" alt="avatar_1" style="height: 40px; border-radius: 50%;">
+                    <div class="d-flex flex-column flex-grow-1 px-2">
+                        <span class="">Michele</span>
+                        <span class="testo-semplice">Ultimo accesso oggi alle 10/01/2020 16:15:22</span>
+                    </div>
+                    <div class="d-flex" style="color: #B1B1B1;">
+                        <i class="fas fa-search px-2"></i>
+                        <i class="fas fa-paperclip px-2"></i>
+                        <i class="fas fa-ellipsis-v px-2"></i>
+                    </div>
+                </div>
+                <!-- zona messaggi -->
+                <div class="sfondo-chat flex-grow-1 d-flex flex-column overflow-auto ps-4 pe-4">
+
+                    <div class="bubble-sent rounded mt-2 p-2 d-flex align-items-center">
+                        Hai portato a spasso il cane
+                    </div>
+
+                    <div class="bubble-received rounded mt-2 p-2 d-flex align-items-center">
+                        Tutto fatto!
+                    </div>
+                </div>
+                <!-- Crea un messaggio -->
+                <div class="write-msj d-flex align-items-center">
+                    <div class="smile-container">
+                        <i class="far fa-smile" style="font-size: 20px; color: gray;"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <input class="py-2 flex-grow-1" type="text" placeholder="Scrivi un messaggio"
+                            style="font-size: 15px; color: gray;width: 100%; border: 0;">
+                    </div>
+                    <div class="micro-container">
+                        <i class="fas fa-microphone" style="font-size: 20px; color: gray;"></i>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </main>
+    <footer></footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
