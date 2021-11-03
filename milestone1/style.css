@@ -1,0 +1,30 @@
+.bg-behind{
+    z-index: -1;
+    /* position: relative; */
+}
+.bg-top{
+    height: 20vh;
+    background-color: #0C9688;
+}
+.bg-down{
+    height: 80vh;
+}
+
+.general-chat-container{
+    height:80vh;
+    width: 800px;
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+}
+
+.subtitle{
+    font-size: 11px;
+    font-weight: bold;
+}
+.testo-semplice{
+    font-size: 10px;
+    color: gray;
+}
