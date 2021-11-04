@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
@@ -20,15 +20,19 @@
 
 <body>
     <main id="root">
+        <!-- Background -->
         <section class="bg-behind">
             <div class="container-fluid bg-top"></div>
             <div class="container-fluid bg-down" style="background-color: #DADBD6;"></div>
         </section>
-        <section class="d-flex border rounded bg-light general-chat-container">
 
-            <div class=" col-4 d-flex flex-column" style="height: 100%;">
-                <!-- Sx first small container -->
-                <div class="container d-flex align-items-center py-2" style="background-color: white;">
+        <!-- Contenitore Generale -->
+        <section class="d-flex border rounded bg-light general-chat-container">
+            <!-- Contenitore sx -->
+            <div class=" col-4 d-flex flex-column">
+
+                <!-- Sx Dati User (top sx) -->
+                <div class="container d-flex align-items-center py-2 bg-light">
                     <img src="img/avatar_io.jpg" alt="avatar_1" style="height: 40px; border-radius: 50%;">
                     <div class="flex-grow-1 px-2">Nome Utente</div>
                     <div class="d-flex" style="color: #B1B1B1;">
@@ -37,17 +41,22 @@
                         <i class="fas fa-ellipsis-v px-1"></i>
                     </div>
                 </div>
+
                 <!-- Sx notifiche container -->
                 <div class="container d-flex align-items-center p-3" style="background-color: #8FDAFA;">
+                    <!-- Campana -->
                     <div class="bg-light d-flex align-items-center justify-content-center"
                         style="height: 30px; width: 30px; border-radius: 50%;">
-                        <i class="fas fa-bell-slash" style="font-size: 15px;color: #8FDAFA;"></i>
+                        <i class="fas fa-bell-slash" style="font-size: 16px;color: #8FDAFA;"></i>
                     </div>
+
+                    <!-- testo notifiche -->
                     <div class="d-flex flex-column" style="padding-left: 10px;">
                         <span class="subtitle">Ricevi notifiche di nuovi messaggi</span>
-                        <span class="testo-semplice">Attiva notifiche desktop</span>
+                        <span class="testo-piccolo text-decoration-underline">Attiva notifiche desktop</span>
                     </div>
                 </div>
+
                 <!-- Search container -->
                 <div class="d-flex container align-items-center py-2" style="background-color: #FAFAFA;">
                     <div class="px-2" style="background-color: white;">
@@ -56,31 +65,41 @@
                     <input class="py-2" type="text" placeholder="Cerca o inizia una nuova chat"
                         style="font-size: 14px; color: gray; flex-grow: 1; border: 0;">
                 </div>
+
                 <!-- Chat users -->
                 <div class=" container d-flex flex-column flex-grow-1 bg-light overflow-auto">
+                    <!-- v-for -->
                     <!-- user singolo -->
-                    <div class="container d-flex py-2" style="background-color: white;" v-for="key in allUsers">
-                        <img :src="key.avatar" alt="avatar_1" style="height: 40px; border-radius: 50%;">
-                        <div class="d-flex flex-column flex-grow-1 px-2">
-                            <span class="">{{key.nome}}</span>
-                            <span class="testo-semplice">{{key.messaggio}}</span>
-                        </div>
-                        <div>
-                            <span class="testo-semplice">10/01/2020 16:15:22</span>
+                    <div class="container d-flex py-2" style="background-color: white;" v-for="(key,indice) in allUsers"
+                        @click="chatSelected(key)">
+                        <!-- avatar sx -->
+                        <img :src="key.avatar" alt="" style="height: 40px; border-radius: 50%;">
+                        <!-- contenitore testo dx -->
+                        <div class="flex-grow-1 ps-2">
+                            <!-- nome e data -->
+                            <div class="d-flex flex-grow-1 justify-content-between">
+                                <div>{{key.name}}</div>
+                                <div class="testo-piccolo d-flex align-items-center">{{key.messagges[0].date}}</div>
+                            </div>
+                            <!-- messaggio -->
+                            <div class="testo-piccolo">
+                                {{getMessage(key.messagges)}}
+                                <!-- {{key.messagges[0].text}} -->
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <!-- Dx -->
+            <!-- Contenitore Destra -->
             <div class="col-8 d-flex flex-column">
-                <!-- dx dati usuario -->
-                <div class="container d-flex align-items-center py-2" style="background-color: white;">
-                    <img src="img/avatar_1.jpg" alt="avatar_1" style="height: 40px; border-radius: 50%;">
+                <!-- dx dati usuario (top dx)-->
+                <div class="container d-flex align-items-center py-2" style="background-color: white;"
+                    v-for="key in chatCliccata">
+                    <img :src="chatCliccata.avatar" alt="avatar_1" style="height: 40px; border-radius: 50%;">
                     <div class="d-flex flex-column flex-grow-1 px-2">
-                        <span class="">Michele</span>
-                        <span class="testo-semplice">Ultimo accesso oggi alle 10/01/2020 16:15:22</span>
+                        <span class="">{{chatCliccata.name}}</span>
+                        <span class="testo-piccolo">{{}}</span>
                     </div>
                     <div class="d-flex" style="color: #B1B1B1;">
                         <i class="fas fa-search px-2"></i>
@@ -88,26 +107,39 @@
                         <i class="fas fa-ellipsis-v px-2"></i>
                     </div>
                 </div>
-                <!-- zona messaggi -->
+
+                <!-- zona messaggi inviati e ricevuti-->
                 <div class="sfondo-chat flex-grow-1 d-flex flex-column overflow-auto ps-4 pe-4">
 
-                    <div class="bubble-sent rounded mt-2 p-2 d-flex align-items-center">
-                        Hai portato a spasso il cane
+                    <!-- messaggio Verde (inviato) -->
+                    <div class="bubble-sent rounded-3 mt-2 d-flex align-items-center flex-column">
+                        <span>Hai portato a spasso il cane</span>
+                        <span class="bubble-time">2020
+                            15::50</span>
                     </div>
 
-                    <div class="bubble-received rounded mt-2 p-2 d-flex align-items-center">
-                        Tutto fatto!
+                    <!-- messaggio Grigio (inviato) -->
+                    <div class="bubble-received rounded-3 mt-2 d-flex flex-column">
+                        <span>Hai portato a spasso il cane</span>
+                        <span class="bubble-time">2020
+                            15::50</span>
                     </div>
                 </div>
+
                 <!-- Crea un messaggio -->
                 <div class="write-msj d-flex align-items-center">
+
+                    <!-- Emoticon -->
                     <div class="smile-container">
                         <i class="far fa-smile" style="font-size: 20px; color: gray;"></i>
                     </div>
+
+                    <!-- Zona Input  -->
                     <div class="flex-grow-1">
                         <input class="py-2 flex-grow-1" type="text" placeholder="Scrivi un messaggio"
                             style="font-size: 15px; color: gray;width: 100%; border: 0;">
                     </div>
+                    <!-- Micro -->
                     <div class="micro-container">
                         <i class="fas fa-microphone" style="font-size: 20px; color: gray;"></i>
                     </div>
