@@ -89,13 +89,13 @@ new Vue({
                 ]
             },
         ],
-        chatCliccata: {}
+        chatCliccata: {},
+        inputText: "",
 
     },
     methods: {
         chatSelected(chiaviDellaChat) {
             this.chatCliccata = chiaviDellaChat;
-            console.log(this.chatCliccata);
         },
         /**
          * Creo la funzione per verificare che ci sia almeno un messaggio
@@ -108,6 +108,29 @@ new Vue({
                 return "Nessun Messaggio";
             }
             return messaggi[messaggi.length - 1].text;
+        },
+        addMessagge() {
+            if (this.inputText === "") {
+                return;
+            }
+            this.chatCliccata.messagges.push(
+                {
+                    date: "ora",
+                    text: this.inputText,
+                    status: "sent"
+                }
+            );
+            this.inputText = "";
+
+            setTimeout(() => {
+                this.chatCliccata.messagges.push(
+                    {
+                        date: "ora",
+                        text: "ok",
+                        status: "received"
+                    }
+                );
+            }, 1000);
         }
     },
     mounted() {
