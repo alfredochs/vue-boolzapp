@@ -89,7 +89,7 @@ new Vue({
                 ]
             },
         ],
-        chatCliccata: null
+        chatCliccata: {}
 
     },
     methods: {
@@ -97,7 +97,6 @@ new Vue({
             this.chatCliccata = chiaviDellaChat;
             console.log(this.chatCliccata);
         },
-
         /**
          * Creo la funzione per verificare che ci sia almeno un messaggio
          *  e per poter stampara l'ultimo messaggio
@@ -110,5 +109,9 @@ new Vue({
             }
             return messaggi[messaggi.length - 1].text;
         }
+    },
+    mounted() {
+        this.chatCliccata = this.allUsers[0];
     }
+
 });

@@ -94,12 +94,11 @@
             <!-- Contenitore Destra -->
             <div class="col-8 d-flex flex-column">
                 <!-- dx dati usuario (top dx)-->
-                <div class="container d-flex align-items-center py-2" style="background-color: white;"
-                    v-for="key in chatCliccata">
+                <div class="container d-flex align-items-center py-2" style="background-color: white;">
                     <img :src="chatCliccata.avatar" alt="avatar_1" style="height: 40px; border-radius: 50%;">
                     <div class="d-flex flex-column flex-grow-1 px-2">
                         <span class="">{{chatCliccata.name}}</span>
-                        <span class="testo-piccolo">{{}}</span>
+                        <span class="testo-piccolo">Ultimo accesso alle {{chatCliccata.messagges[0].date}}</span>
                     </div>
                     <div class="d-flex" style="color: #B1B1B1;">
                         <i class="fas fa-search px-2"></i>
