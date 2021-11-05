@@ -79,8 +79,8 @@
                             <!-- nome e data -->
                             <div class="d-flex flex-grow-1 justify-content-between">
                                 <div>{{key.name}}</div>
-                                <div class="testo-piccolo d-flex align-items-center">{{key.messagges.length >0?
-                                    key.messagges.date : ""}}</div>
+                                <div class="testo-piccolo d-flex align-items-center">
+                                    {{key.messagges.length > 0 ? key.messagges[0].date : ""}}</div>
                             </div>
                             <!-- messaggio -->
                             <div class="testo-piccolo">
@@ -99,7 +99,8 @@
                     <img :src="chatCliccata.avatar" alt="avatar_1" style="height: 40px; border-radius: 50%;">
                     <div class="d-flex flex-column flex-grow-1 px-2">
                         <span class="">{{chatCliccata.name}}</span>
-                        <span class="testo-piccolo">Ultimo accesso alle {{}}</span>
+                        <span class="testo-piccolo">{{)}}</span>
+                        <!-- {{chatCliccata.messagges[0].date}} -->
                     </div>
                     <div class="d-flex" style="color: #B1B1B1;">
                         <i class="fas fa-search px-2"></i>

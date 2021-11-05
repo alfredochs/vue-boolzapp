@@ -150,9 +150,14 @@ new Vue({
         deleteMessage(indice) {
             return this.chatCliccata.messagges.splice(indice, 1);
         },
-    },
-    mounted() {
-        this.chatCliccata = this.allUsers[0];
-    }
+        // getDateFromMessagges(messaggi) {
+        //     if (messaggi.length > 0) {
+        //         return messaggi.date;
+        //     }
+        // },
+        mounted() {
+            this.chatCliccata = this.allUsers[0];
+        }
 
+    }
 });
