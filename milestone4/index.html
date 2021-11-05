@@ -62,7 +62,7 @@
                     <div class="px-2" style="background-color: white;">
                         <i class="fas fa-search" style="color: gray; font-size: 16px;"></i>
                     </div>
-                    <input class="py-2" type="text" placeholder="Cerca o inizia una nuova chat"
+                    <input v-model="inputSearch" class="py-2" type="text" placeholder="Cerca o inizia una nuova chat"
                         style="font-size: 14px; color: gray; flex-grow: 1; border: 0;">
                 </div>
 
@@ -70,8 +70,8 @@
                 <div class=" container d-flex flex-column flex-grow-1 bg-light overflow-auto">
                     <!-- v-for -->
                     <!-- user singolo -->
-                    <div class="container d-flex py-2" style="background-color: white;" v-for="(key,indice) in allUsers"
-                        @click="chatSelected(key)">
+                    <div class="container d-flex py-2" style="background-color: white;"
+                        v-for="(key,indice) in filterUsers()" @click="chatSelected(key)">
                         <!-- avatar sx -->
                         <img :src="key.avatar" alt="" style="height: 40px; border-radius: 50%;">
                         <!-- contenitore testo dx -->

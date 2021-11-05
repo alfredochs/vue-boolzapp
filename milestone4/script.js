@@ -91,7 +91,7 @@ new Vue({
         ],
         chatCliccata: {},
         inputText: "",
-
+        inputSearch: ""
     },
     methods: {
         chatSelected(chiaviDellaChat) {
@@ -131,6 +131,21 @@ new Vue({
                     }
                 );
             }, 1000);
+        },
+        filterUsers() {
+            /**
+             * Questa funzione va a filtrare sull'array di oggetti un singolo usuario.
+             * Questo user sarà un oggetto quindi dovremmo prendere il .name
+             * per una ricerca ottimizzata lo mettiamo tutto in minuscolo
+             * poi a questo applichiamo il "filtro .includes" che comproverà
+             * se include il contenuto della barra di ricerca che abbiamo collegato
+             * all'index con v-model (inputSearch). Dentro l'includes mettiamo
+             * che cosa deve contenere, in questo caso il contenuto di inoutSearch che
+             * sarà anche minuscolo ed eliminiamo gli spazi ai lati.
+             */
+            return this.allUsers.filter((user) => {
+                return user.name.toLowerCase().includes(this.inputSearch.toLowerCase().trim());
+            });
         }
     },
     mounted() {
