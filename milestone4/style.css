@@ -1,0 +1,86 @@
+/* ****************** */
+/* Background */
+.bg-behind{
+    /* z-index: -1; */
+}
+.bg-top{
+    height: 20vh;
+    background-color: #0C9688;
+}
+.bg-down{
+    height: 80vh;
+}
+/* ****************** */
+
+/* Container Generale */
+.general-chat-container{
+    height:80vh;
+    width: 1000px;
+    position: absolute;
+    /* z-index: 5; */
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+}
+
+/* Zona messaggi inviati e ricevuti */
+.sfondo-chat{
+    background-image: url(img/mine.jpg);
+    height: 100%;
+    overflow: auto;
+}
+.bubble-sent{
+    max-width: 50%;
+    min-height: 30px;
+    background-color: #D5F9BE;
+    font-size: 14px;
+    align-self: flex-end;
+    padding:8px;
+    flex-shrink: 0;
+}
+.bubble-received{
+    max-width: 50%;
+    min-height: 30px;
+    background-color: #FFFFFE;
+    align-self: flex-start;
+    font-size: 14px;
+    padding:8px;
+    flex-shrink: 0;
+}
+.write-msj{
+    height: 60px;
+    background-color: #F3EEEA;
+    width: 100%;
+}
+
+/* Crea messaggio */
+.smile-container{
+    width: 40px;
+    text-align: center;
+}
+.micro-container{
+    width: 40px;
+    text-align: center;
+}
+/* ****************** */
+
+/* Utilities */
+.subtitle{
+    font-size: 11px;
+    font-weight: bold;
+}
+.testo-piccolo{
+    font-size: 10px;
+    color: gray;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 70%;
+    overflow: hidden;
+}
+.bubble-time{
+    font-size: 9px;
+    text-align: right;
+    align-self: flex-end;
+    color: gray;
+}
+/* ****************** */
