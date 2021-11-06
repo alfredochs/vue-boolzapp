@@ -91,7 +91,7 @@ new Vue({
         ],
         chatCliccata: {},
         inputText: "",
-        inputSearch: ""
+        inputSearch: "",
     },
     methods: {
         chatSelected(chiaviDellaChat) {

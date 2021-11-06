@@ -99,7 +99,8 @@
                     <img :src="chatCliccata.avatar" alt="avatar_1" style="height: 40px; border-radius: 50%;">
                     <div class="d-flex flex-column flex-grow-1 px-2">
                         <span class="">{{chatCliccata.name}}</span>
-                        <span class="testo-piccolo">Ultimo accesso alle {{}}</span>
+                        <span class="testo-piccolo">Ultimo accesso alle
+                            {{}}</span>
                     </div>
                     <div class="d-flex" style="color: #B1B1B1;">
                         <i class="fas fa-search px-2"></i>
@@ -112,12 +113,20 @@
                 <div class="sfondo-chat flex-grow-1 d-flex flex-column overflow-auto ps-4 pe-4">
 
                     <!-- messaggi (inviati e ricevuti) -->
-                    <div class="rounded-3 mt-2 d-flex align-items-center flex-column"
+                    <div class="rounded-3 mt-2 d-flex align-items-center flex-column position-relative"
                         v-for="(key,i) in chatCliccata.messagges"
                         :class="key.status === 'sent' ? 'bubble-sent' : 'bubble-received'">
                         <span> {{key.text}}</span>
                         <span class="bubble-time">{{key.date}}</span>
-                        <div class="contenitore-X" @click="deleteMessage(i)">X</div>
+                        <!-- <div class="contenitore-X position-absolute" @click="deleteMessage(i)"><i
+                                class="fas fa-chevron-down"></i></div> -->
+
+                        <div class="dropdown">
+                            <span class="contenitore-X"><i class="fas fa-chevron-down"></i></span>
+                            <div class="dropdown-content">
+                                <p @click="deleteMessage(i)">Elimina messaggio</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
