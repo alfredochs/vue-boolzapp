@@ -109,6 +109,12 @@ new Vue({
             }
             return messaggi[messaggi.length - 1].text;
         },
+        getLastMessage() {
+            if (!this.chatCliccata.messagges || this.chatCliccata.messagges.length === 0) {
+                return "";
+            }
+            return this.chatCliccata.messagges[this.chatCliccata.messagges.length - 1].date;
+        },
         addMessagge() {
             if (this.inputText === "") {
                 return;
